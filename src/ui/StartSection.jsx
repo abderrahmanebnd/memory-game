@@ -1,22 +1,40 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "./Button";
+import { randomNumbersIcons } from "../utils/helpers";
 
 function StartSection() {
   const dispatch = useDispatch();
+  const {
+    theme,
+    playersNumber: number,
+    size,
+  } = useSelector((store) => store.choices);
   const [activeSelections, setActiveSelections] = useState({
-    theme: "",
-    number: "",
-    size: "",
+    theme,
+    number,
+    size,
   });
 
   const handleSetActive = (role, value) => {
+    let finalValue = value;
+    if (role !== "theme") {
+      const parts = value.split("x");
+      finalValue = parseInt(parts[0], 10) * parseInt(parts[1], 10);
+    }
+
     setActiveSelections({
       ...activeSelections,
-      [role]: value,
+      [role]: finalValue,
     });
   };
 
+  const items = randomNumbersIcons(
+    activeSelections.theme,
+    activeSelections.size
+  );
+  const gridSize = size === 16 ? "4" : "6"; // Corrected gridSize
+  console.log(activeSelections.size);
   return (
     <section className="bg-white w-96 p-7 rounded-2xl">
       <div>
@@ -50,7 +68,7 @@ function StartSection() {
           <Button
             dispatch={dispatch}
             role={"number"}
-            isActive={activeSelections.number === "1"}
+            isActive={activeSelections.number === 1}
             setActive={handleSetActive}
           >
             1
@@ -58,7 +76,7 @@ function StartSection() {
           <Button
             dispatch={dispatch}
             role={"number"}
-            isActive={activeSelections.number === "2"}
+            isActive={activeSelections.number === 2}
             setActive={handleSetActive}
           >
             2
@@ -66,7 +84,7 @@ function StartSection() {
           <Button
             dispatch={dispatch}
             role={"number"}
-            isActive={activeSelections.number === "3"}
+            isActive={activeSelections.number === 3}
             setActive={handleSetActive}
           >
             3
@@ -74,7 +92,7 @@ function StartSection() {
           <Button
             dispatch={dispatch}
             role={"number"}
-            isActive={activeSelections.number === "4"}
+            isActive={activeSelections.number === 4}
             setActive={handleSetActive}
           >
             4
@@ -90,7 +108,7 @@ function StartSection() {
           <Button
             dispatch={dispatch}
             role={"size"}
-            isActive={activeSelections.size === "4x4"}
+            isActive={activeSelections.size === 16}
             setActive={handleSetActive}
           >
             4x4
@@ -98,7 +116,7 @@ function StartSection() {
           <Button
             dispatch={dispatch}
             role={"size"}
-            isActive={activeSelections.size === "6x6"}
+            isActive={activeSelections.size === 36}
             setActive={handleSetActive}
           >
             6x6
@@ -108,8 +126,12 @@ function StartSection() {
       <Button dispatch={dispatch} type={"primary"}>
         Start Game
       </Button>
+      <div className={`mt-6 grid grid-cols-${gridSize} `}>
+        {items.map((item, index) => (
+          <div key={index}>{item}</div>
+        ))}
+      </div>
     </section>
   );
 }
-
 export default StartSection;

@@ -1,5 +1,5 @@
 function Game() {
-  return <div></div>;
+  return <div>Game</div>;
 }
 
 export default Game;

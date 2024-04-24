@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   theme: "Numbers",
-  playersNumber: "1",
-  size: "16",
+  playersNumber: 1,
+  size: 16,
 };
 
 const choicesSlice = createSlice({
