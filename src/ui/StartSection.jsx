@@ -4,7 +4,6 @@ import Button from "./Button";
 import { randomNumbersIcons } from "../utils/helpers";
 
 function StartSection() {
-  const dispatch = useDispatch();
   const {
     theme,
     playersNumber: number,
@@ -29,12 +28,6 @@ function StartSection() {
     });
   };
 
-  const items = randomNumbersIcons(
-    activeSelections.theme,
-    activeSelections.size
-  );
-  const gridSize = size === 16 ? "4" : "6"; // Corrected gridSize
-  console.log(activeSelections.size);
   return (
     <section className="bg-white w-96 p-7 rounded-2xl">
       <div>
@@ -43,7 +36,6 @@ function StartSection() {
         </h3>
         <div className="grid grid-cols-2 gap-5 mb-5">
           <Button
-            dispatch={dispatch}
             role={"theme"}
             isActive={activeSelections.theme === "Numbers"}
             setActive={handleSetActive}
@@ -51,7 +43,6 @@ function StartSection() {
             Numbers
           </Button>
           <Button
-            dispatch={dispatch}
             role={"theme"}
             isActive={activeSelections.theme === "Icons"}
             setActive={handleSetActive}
@@ -66,7 +57,6 @@ function StartSection() {
         </h3>
         <div className="grid grid-cols-4 gap-5 mb-5">
           <Button
-            dispatch={dispatch}
             role={"number"}
             isActive={activeSelections.number === 1}
             setActive={handleSetActive}
@@ -74,7 +64,6 @@ function StartSection() {
             1
           </Button>
           <Button
-            dispatch={dispatch}
             role={"number"}
             isActive={activeSelections.number === 2}
             setActive={handleSetActive}
@@ -82,7 +71,6 @@ function StartSection() {
             2
           </Button>
           <Button
-            dispatch={dispatch}
             role={"number"}
             isActive={activeSelections.number === 3}
             setActive={handleSetActive}
@@ -90,7 +78,6 @@ function StartSection() {
             3
           </Button>
           <Button
-            dispatch={dispatch}
             role={"number"}
             isActive={activeSelections.number === 4}
             setActive={handleSetActive}
@@ -106,7 +93,6 @@ function StartSection() {
         </h3>
         <div className="grid grid-cols-2 gap-5 mb-5">
           <Button
-            dispatch={dispatch}
             role={"size"}
             isActive={activeSelections.size === 16}
             setActive={handleSetActive}
@@ -114,7 +100,6 @@ function StartSection() {
             4x4
           </Button>
           <Button
-            dispatch={dispatch}
             role={"size"}
             isActive={activeSelections.size === 36}
             setActive={handleSetActive}
@@ -123,14 +108,9 @@ function StartSection() {
           </Button>
         </div>
       </div>
-      <Button dispatch={dispatch} type={"primary"}>
+      <Button type="primary" role="start">
         Start Game
       </Button>
-      <div className={`mt-6 grid grid-cols-${gridSize} `}>
-        {items.map((item, index) => (
-          <div key={index}>{item}</div>
-        ))}
-      </div>
     </section>
   );
 }

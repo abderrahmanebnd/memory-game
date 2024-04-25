@@ -1,41 +1,23 @@
-import React from "react";
-import {
-  FaAccessibleIcon,
-  FaBowlingBall,
-  FaAnchor,
-  FaApple,
-  FaBomb,
-  FaBolt,
-  FaBook,
-  FaCamera,
-  FaCar,
-  FaCat,
-  FaAirFreshener,
-  FaAffiliatetheme,
-  FaAlgolia,
-  FaBaby,
-  FaBicycle,
-  FaCrow,
-} from "react-icons/fa";
-
 export function randomNumbersIcons(theme, size) {
   let icons = [
-    FaAccessibleIcon,
-    FaBowlingBall,
-    FaAnchor,
-    FaApple,
-    FaBomb,
-    FaBolt,
-    FaBook,
-    FaCamera,
-    FaCar,
-    FaCat,
-    FaAffiliatetheme,
-    FaAirFreshener,
-    FaAlgolia,
-    FaBaby,
-    FaBicycle,
-    FaCrow,
+    "anchor-solid",
+    "atom-solid",
+    "bolt-lightning-solid",
+    "bomb-solid",
+    "book-solid",
+    "carrot-solid",
+    "cat-solid",
+    "crow-solid",
+    "fish-solid",
+    "flask-solid",
+    "hat-wizard-solid",
+    "jet-fighter-up-solid",
+    "lightbulb-solid",
+    "meteor-solid",
+    "moon-solid",
+    "star-solid",
+    "terminal-solid",
+    "tree-solid",
   ];
 
   let items = [];
@@ -45,9 +27,7 @@ export function randomNumbersIcons(theme, size) {
     const pairedIcons = [...shuffledIcons, ...shuffledIcons];
     const finalIcons = shuffleArray(pairedIcons);
 
-    items = finalIcons.map((Icon, index) =>
-      React.createElement(Icon, { key: index })
-    );
+    items = finalIcons;
   } else if (theme === "Numbers") {
     const numbers = Array.from({ length: size / 2 }).map(
       (_, index) => index + 1

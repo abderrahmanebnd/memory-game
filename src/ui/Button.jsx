@@ -5,25 +5,29 @@ import {
   selectTheme,
 } from "../features/choices";
 
-function Button({
-  children,
-  type = "",
-  role = "",
-  dispatch,
-  isActive,
-  setActive,
-}) {
+import { useDispatch, useSelector } from "react-redux";
+import { newGame, startGame } from "../features/game";
+import { resetPlayer } from "../features/singlePlayer";
+
+function Button({ children, type = "", role = "", isActive, setActive }) {
   let primaryStyle = "";
   if (type === "primary") {
     primaryStyle =
-      "bg-primary-400 hover:bg-primary-300 focus:bg-primary-300 focus:ring-primary-400 block text-center";
+      "bg-primary-400 hover:bg-primary-300 focus:bg-primary-300 focus:ring-primary-400 block ";
   }
 
-  const buttonStyle = `w-full rounded-full py-[2px] px-4 capitalize font-semibold text-lg tracking-wide text-gray-300 transition-all duration-300 ${isActive ? "bg-neutral-800" : "bg-neutral-300"} hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring-neutral-500 focus:ring-4 focus:ring-offset-2 ${primaryStyle}`;
+  const buttonStyle = `w-full rounded-full py-[3px] px-4 capitalize font-semibold text-lg
+  text-center tracking-wide text-gray-300 transition-all duration-300 ${isActive ? "bg-neutral-800" : "bg-neutral-300"} hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring-neutral-500 focus:ring-4 focus:ring-offset-2 ${primaryStyle}`;
+
+  const { theme, size } = useSelector((store) => store.choices);
+  const dispatch = useDispatch();
 
   function handleClick() {
-    if (type === "primary") {
-      // dispatch(startGame());
+    if (role === "newGame") {
+      dispatch(newGame());
+    } else if (role === "start") {
+      dispatch(startGame(theme, size));
+      dispatch(resetPlayer());
     } else {
       setActive(role, children);
       if (role === "theme") {
@@ -38,9 +42,16 @@ function Button({
     }
   }
 
-  if (type === "primary") {
+  if (role === "start") {
     return (
-      <NavLink to="game" onClick={() => handleClick()} className={buttonStyle}>
+      <NavLink to="/game" onClick={() => handleClick()} className={buttonStyle}>
+        {children}
+      </NavLink>
+    );
+  }
+  if (role === "newGame") {
+    return (
+      <NavLink to="/" onClick={() => handleClick()} className={buttonStyle}>
         {children}
       </NavLink>
     );
