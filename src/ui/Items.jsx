@@ -1,16 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
-import { checkMatch, flipCard } from "../features/game";
+import { checkMatch, endGame, flipCard } from "../features/game";
 import { increaseMoves } from "../features/singlePlayer";
+import { useEffect } from "react";
 
 function Items() {
   const dispatch = useDispatch();
   const { items } = useSelector((store) => store.game);
   const { theme, size } = useSelector((store) => store.choices);
-  const { openedItems } = useSelector((store) => store.game);
+  const { openedItems, matchedPairs } = useSelector((store) => store.game);
 
   // Calculate grid size based on size
   const gridSize = size === 16 ? "4" : "6";
 
+  console.log(matchedPairs);
   const handleClick = (index) => {
     if (items[index].opened || items[index].matched) {
       return;
@@ -26,9 +28,14 @@ function Items() {
     }
   };
 
+  useEffect(() => {
+    if (matchedPairs.length === size) {
+      dispatch(endGame());
+    }
+  }, [matchedPairs, dispatch, size]);
   return (
     <section
-      className={`my-14 grid grid-cols-${gridSize}  gap-6 container m-auto `}
+      className={`my-14 grid grid-cols-${gridSize}  gap-6 place-items-center justify-center max-w-2xl m-auto`}
     >
       {items.map((item, index) => (
         <div key={index} onClick={() => handleClick(index)}>

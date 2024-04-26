@@ -17,7 +17,7 @@ function Game() {
     dispatch(startGame(theme, size));
   }, [dispatch, size, theme]);
   return (
-    <main className="py-10 px-20  m-auto">
+    <main className="py-10 px-20  m-auto relative">
       <Header />
       <Items />
       {number === 1 ? <SinglePlayer /> : <MultiPlayers />}

@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   openedItems: [],
   matchedPairs: [],
+  gameOver: false,
 };
 
 const gameSlice = createSlice({
@@ -15,6 +16,7 @@ const gameSlice = createSlice({
       state.items = initialState.items;
       state.openedItems = initialState.openedItems;
       state.matchedPairs = initialState.matchedPairs;
+      state.gameOver = initialState.gameOver;
     },
     startGame: {
       prepare(theme, size) {
@@ -54,8 +56,12 @@ const gameSlice = createSlice({
       // Clear openedItems array
       state.openedItems = [];
     },
+    endGame(state) {
+      state.gameOver = true;
+    },
   },
 });
 
-export const { newGame, startGame, flipCard, checkMatch } = gameSlice.actions;
+export const { newGame, startGame, flipCard, checkMatch, endGame } =
+  gameSlice.actions;
 export default gameSlice.reducer;

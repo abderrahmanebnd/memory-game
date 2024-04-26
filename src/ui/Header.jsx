@@ -3,7 +3,7 @@ import Button from "./Button";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between container m-auto">
+    <header className="flex items-center justify-between max-w-2xl m-auto">
       <NavLink to="/">
         <img src="/assets/logo.svg" className="w-28" alt="logo" />
       </NavLink>
