@@ -19,7 +19,7 @@ function Button({ children, type = "", role = "", isActive, setActive }) {
   const buttonStyle = `w-full rounded-full py-[3px] px-4 capitalize font-semibold text-lg
   text-center tracking-wide text-gray-300 transition-all duration-300 ${isActive ? "bg-neutral-800" : "bg-neutral-300"} hover:bg-neutral-800 focus:bg-neutral-800 focus:outline-none focus:ring-neutral-500 focus:ring-4 focus:ring-offset-2 ${primaryStyle}`;
 
-  const { theme, size } = useSelector((store) => store.choices);
+  const { theme, size, number } = useSelector((store) => store.choices);
   const dispatch = useDispatch();
 
   function handleClick() {

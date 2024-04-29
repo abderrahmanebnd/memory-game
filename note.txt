@@ -1,0 +1,5 @@
+wsh mazal lina : 
+1-fix the incrementscore called incremenMatchedPairs 
+1- fix changesTurn 
+1-dialog of the end of the multiplayers 
+4-rensponsive design 

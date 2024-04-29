@@ -1,30 +1,35 @@
 import { useDispatch, useSelector } from "react-redux";
 import { checkMatch, endGame, flipCard } from "../features/game";
-import { increaseMoves } from "../features/singlePlayer";
 import { useEffect } from "react";
+import { changePlayers, incrementMatchedPairs } from "../features/multiPlayers";
 
-function Items() {
+function MultiPlayersItems() {
   const dispatch = useDispatch();
-  const { items } = useSelector((store) => store.game);
+  const { currentTurn } = useSelector((store) => store.multiPlayers);
   const { theme, size } = useSelector((store) => store.choices);
-  const { openedItems, matchedPairs } = useSelector((store) => store.game);
+  const { items, openedItems, matchedPairs, areMatchedPairs } = useSelector(
+    (store) => store.game
+  );
 
-  // Calculate grid size based on size
-  const gridSize = size === 16 ? "4" : "6";
-
-  console.log(matchedPairs);
   const handleClick = (index) => {
     if (items[index].opened || items[index].matched) {
       return;
     }
 
     dispatch(flipCard(index));
-    dispatch(increaseMoves());
     // If there are exactly 2 opened cards, check for a match
     if (openedItems.length === 1) {
+      // Dispatch checkMatch synchronously
+
+      // Wait for a short time before checking if pairs are matched
       setTimeout(() => {
         dispatch(checkMatch());
-      }, 500);
+        if (areMatchedPairs) {
+          dispatch(incrementMatchedPairs());
+        } else {
+          dispatch(changePlayers()); // Change players if pairs are not matched
+        }
+      }, 300);
     }
   };
 
@@ -35,7 +40,7 @@ function Items() {
   }, [matchedPairs, dispatch, size]);
   return (
     <section
-      className={`my-14 grid grid-cols-${gridSize}  gap-6 place-items-center justify-center max-w-2xl m-auto`}
+      className={`my-14 grid ${size === 16 ? "grid-cols-4" : "grid-cols-6"}  gap-6 place-items-center justify-center max-w-2xl m-auto`}
     >
       {items.map((item, index) => (
         <div key={index} onClick={() => handleClick(index)}>
@@ -62,4 +67,4 @@ function Items() {
   );
 }
 
-export default Items;
+export default MultiPlayersItems;

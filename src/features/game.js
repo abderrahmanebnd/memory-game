@@ -6,6 +6,7 @@ const initialState = {
   openedItems: [],
   matchedPairs: [],
   gameOver: false,
+  areMatchedPairs: false,
 };
 
 const gameSlice = createSlice({
@@ -13,10 +14,7 @@ const gameSlice = createSlice({
   initialState,
   reducers: {
     newGame(state) {
-      state.items = initialState.items;
-      state.openedItems = initialState.openedItems;
-      state.matchedPairs = initialState.matchedPairs;
-      state.gameOver = initialState.gameOver;
+      return initialState;
     },
     startGame: {
       prepare(theme, size) {
@@ -34,6 +32,8 @@ const gameSlice = createSlice({
         }));
         state.openedItems = [];
         state.matchedPairs = [];
+        state.gameOver = false;
+        state.areMatchedPairs = false;
       },
     },
     flipCard(state, action) {
@@ -47,13 +47,19 @@ const gameSlice = createSlice({
         state.items[firstIndex].matched = true;
         state.items[secondIndex].matched = true;
         state.matchedPairs.push(firstIndex, secondIndex);
+        state.areMatchedPairs = true;
       } else {
         // If cards don't match, close them
         state.items[firstIndex].opened = false;
         state.items[secondIndex].opened = false;
+        state.areMatchedPairs = false;
       }
 
+      console.log(state.areMatchedPairs);
       // Clear openedItems array
+      state.openedItems = [];
+    },
+    resetOpenedItems(state) {
       state.openedItems = [];
     },
     endGame(state) {
@@ -62,6 +68,12 @@ const gameSlice = createSlice({
   },
 });
 
-export const { newGame, startGame, flipCard, checkMatch, endGame } =
-  gameSlice.actions;
+export const {
+  newGame,
+  startGame,
+  flipCard,
+  checkMatch,
+  resetOpenedItems,
+  endGame,
+} = gameSlice.actions;
 export default gameSlice.reducer;

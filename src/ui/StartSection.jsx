@@ -51,41 +51,42 @@ function StartSection() {
           </Button>
         </div>
       </div>
-      <div>
+      {/* <div>
         <h3 className="font-semibold text-neutral-400 mb-2 text-md">
           Number of Players
         </h3>
-        <div className="grid grid-cols-4 gap-5 mb-5">
-          <Button
-            role={"number"}
-            isActive={activeSelections.number === 1}
-            setActive={handleSetActive}
-          >
-            1
-          </Button>
-          <Button
-            role={"number"}
-            isActive={activeSelections.number === 2}
-            setActive={handleSetActive}
-          >
-            2
-          </Button>
-          <Button
-            role={"number"}
-            isActive={activeSelections.number === 3}
-            setActive={handleSetActive}
-          >
-            3
-          </Button>
-          <Button
-            role={"number"}
-            isActive={activeSelections.number === 4}
-            setActive={handleSetActive}
-          >
-            4
-          </Button>
-        </div>
+
+      <div className="grid grid-cols-4 gap-5 mb-5">
+        <Button
+          role={"number"}
+          isActive={activeSelections.number === 1}
+          setActive={handleSetActive}
+        >
+          1
+        </Button>
+        <Button
+          role={"number"}
+          isActive={activeSelections.number === 2}
+          setActive={handleSetActive}
+        >
+          2
+        </Button>
+        <Button
+          role={"number"}
+          isActive={activeSelections.number === 3}
+          setActive={handleSetActive}
+        >
+          3
+        </Button>
+        <Button
+          role={"number"}
+          isActive={activeSelections.number === 4}
+          setActive={handleSetActive}
+        >
+          4
+        </Button>
       </div>
+      </div> */}
 
       <div>
         <h3 className="font-semibold text-neutral-400 mb-2 text-md">

@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+
+import { startGame } from "../features/game";
+
 import SinglePlayer from "../ui/SinglePlayer";
 import MultiPlayers from "../ui/MultiPlayers";
 import Header from "../ui/Header";
-import Items from "../ui/Items";
-import { useEffect } from "react";
-import { startGame } from "../features/game";
+import SinglePlayersItems from "../ui/SinglePlayersItems";
+import MultiPlayersItems from "../ui/MultiPlayersItems";
 
 function Game() {
   const {
@@ -19,8 +22,18 @@ function Game() {
   return (
     <main className="py-10 px-20  m-auto relative">
       <Header />
-      <Items />
-      {number === 1 ? <SinglePlayer /> : <MultiPlayers />}
+      {/* this condition will always give the singlePlayersItems because the multiplayers causes problems until we fix it */}
+      {number === 1 ? (
+        <>
+          <SinglePlayersItems />
+          <SinglePlayer />
+        </>
+      ) : (
+        <>
+          <MultiPlayersItems />
+          <MultiPlayers />
+        </>
+      )}
     </main>
   );
 }
