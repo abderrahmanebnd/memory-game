@@ -1,4 +1,4 @@
-# Memory game
+# Frontend Mentor - Memory game solution
 
 ## Table of contents
 
@@ -27,7 +27,7 @@ Choose to play on either a 6x6 or 4x4 grid
 ### Links
 
 - Solution URL: [Memory Game](https://github.com/abderrahmanebnd/memory-game)
-- Live Site URL: [Vercel](https://your-live-site-url.com)
+- Live Site URL: [Vercel](https://memory-game-sigma-sepia.vercel.app/)
 
 ### Built with
 
@@ -45,4 +45,5 @@ Choose to play on either a 6x6 or 4x4 grid
 - Website - [abderrahmanebnd](https://github.com/abderrahmanebnd)
 - Frontend Mentor - [@abderrahmanebnd](https://www.frontendmentor.io/profile/abderrahmanebnd)
 - LinkedIn - [@bendaia_abderrahmane](https://www.linkedin.com/in/bendaia-abderrahmane-80b3a027b/)
-- LinkedIn - [@abderrahmane1110](https://codepen.io/abderrahmane1110)
+- Codepen - [@abderrahmane1110](https://codepen.io/abderrahmane1110)
+- CodeWars - [@abderrahmanebnd](https://www.codewars.com/users/abderrahmane1110)
