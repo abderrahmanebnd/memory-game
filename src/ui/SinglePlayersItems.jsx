@@ -31,26 +31,26 @@ function SinglePlayersItems() {
   }, [matchedPairs, dispatch, size]);
   return (
     <section
-      className={`my-14 grid ${size === 16 ? "grid-cols-4" : "grid-cols-6"}  gap-6 place-items-center justify-center max-w-2xl m-auto`}
+      className={`my-10 md:my-14 grid ${size === 16 ? "grid-cols-4" : "grid-cols-6"} gap-y-2 gap-x-4 place-items-center justify-center max-w-lg m-auto`}
     >
       {items.map((item, index) => (
         <div key={index} onClick={() => handleClick(index)}>
           {item.opened || item.matched ? (
             <div
-              className={`text-5xl ${item.matched ? "bg-neutral-300" : "bg-primary-300"} text-white h-20 w-20 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300`}
+              className={`text-5xl ${item.matched ? "bg-neutral-300" : "bg-primary-300"} text-white w-12 h-12 sm:h-20 sm:w-20 rounded-full flex justify-center items-center cursor-pointer transition-all duration-300`}
             >
               {theme === "Icons" ? (
                 <img
                   src={`/assets/${item.value}.svg`}
                   alt="icon"
-                  className="w-12"
+                  className="w-9 sm:w-12"
                 />
               ) : (
                 item.value
               )}
             </div>
           ) : (
-            <div className="text-5xl bg-neutral-700 text-neutral-300 h-20 w-20 rounded-full flex justify-center items-center  hover:bg-primary-300 cursor-pointer transition-all duration-300"></div>
+            <div className="text-5xl bg-neutral-700 text-neutral-300 w-12 h-12 sm:h-20 sm:w-20  rounded-full flex justify-center items-center  hover:bg-neutral-400 cursor-pointer transition-all duration-300"></div>
           )}
         </div>
       ))}

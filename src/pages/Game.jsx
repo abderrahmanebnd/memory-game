@@ -20,9 +20,10 @@ function Game() {
     dispatch(startGame(theme, size));
   }, [dispatch, size, theme]);
   return (
-    <main className="py-10 px-20  m-auto relative">
+    <main className="p-5 sm:py-10 sm:px-20  m-auto relative">
       <Header />
-      {/* this condition will always give the singlePlayersItems because the multiplayers causes problems until we fix it */}
+      {/* this condition will always give the singlePlayersItems 
+      because the multiplayers causes problems until we fix it */}
       {number === 1 ? (
         <>
           <SinglePlayersItems />

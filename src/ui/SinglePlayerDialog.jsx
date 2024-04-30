@@ -2,27 +2,13 @@ import Button from "./Button";
 import Result from "./Result";
 import { useSelector } from "react-redux";
 
-function Overlay({ children }) {
-  // const gameEnded = useSelector((state) => state.game.gameEnded);
-
-  // // If the game has not ended, don't render the overlay
-  // if (!gameEnded) {
-  //   return null;
-  // }
-
+export function Overlay({ children }) {
   return (
     <div className="fixed top-0 left-0 w-full h-full bg-black opacity-40 z-50"></div>
   );
 }
 
 function SinglePlayerDialog({ children }) {
-  // const gameEnded = useSelector((state) => state.game.gameEnded);
-
-  // // If the game has not ended, don't render the dialog
-  // if (!gameEnded) {
-  //   return null;
-  // }
-
   return (
     <>
       <Overlay />
@@ -31,7 +17,7 @@ function SinglePlayerDialog({ children }) {
           You did it!
         </h1>
         <p className="text-center text-neutral-500 font-semibold text-sm mb-7">
-          Game over! Here is how you got on...{" "}
+          Game over! Here is how you got on...
         </p>
         <Result />
         <div className="flex items-center gap-3">

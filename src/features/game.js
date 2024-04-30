@@ -55,7 +55,6 @@ const gameSlice = createSlice({
         state.areMatchedPairs = false;
       }
 
-      console.log(state.areMatchedPairs);
       // Clear openedItems array
       state.openedItems = [];
     },

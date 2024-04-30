@@ -3,3 +3,6 @@ wsh mazal lina :
 1- fix changesTurn 
 1-dialog of the end of the multiplayers 
 4-rensponsive design 
+
+1- fix the rensponsive design ;
+2- and the menu icon 
